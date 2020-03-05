@@ -1,9 +1,23 @@
-import React, { useState } from 'react'
-// ## TODO REFACTOR THIS INTO 3,4 components
-// ##REMOVE THE LOGIC
-// ##MAKE THE LOGIC TESTABLE
-// ##ADD THE RATE FIELD
-// ##ADD SOME BASIC TESTS
+import React, { useState } from 'react';
+import checkNumberFormat from '../utils/checkNumberFormat';
+
+const initialState = {
+  inputs: [
+    {type: 'USD', amount: '0'},
+    {type: 'EUR', amount: '0'}
+  ]
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
 
 export default function ExchangeUnit({rates, pockets}){
   const possiblePockets = Object.keys(pockets);
@@ -12,6 +26,7 @@ export default function ExchangeUnit({rates, pockets}){
     '0': '0',
     '1': '0'
   });
+
   const handleOnChangeCurrency = (evt, index) => {
     const pocket = evt.target.value;
     if (pocketsInUse.includes(pocket)){
@@ -22,15 +37,6 @@ export default function ExchangeUnit({rates, pockets}){
     }
   }
 
-  const checkNumberFormat = (value) => {
-    const string = String(value);
-    if (string.match(/^\d+(?:\.\d{1,2})?$/)){
-      return Number(value).toFixed(2);
-    } else {
-      return value;
-    }
-  }
-
   const convertCurrency = (correctlyFormattedNumber, originalIdx, secondaryIdx) => {
     const base = pocketsInUse[originalIdx];
     const secondaryCurrency = pocketsInUse[secondaryIdx]
@@ -38,6 +44,7 @@ export default function ExchangeUnit({rates, pockets}){
     const approximateNumber = correctlyFormattedNumber * correctRate;
     return checkNumberFormat(approximateNumber);
   };
+
   const handleChangeInput = (evt, idx) => {
     const correctlyFormattedNumber = checkNumberFormat(evt.target.value);
     const secondaryStringIdx = idx === 0 ? 1 : 0;
@@ -45,7 +52,7 @@ export default function ExchangeUnit({rates, pockets}){
     setCurrentInputValues({
       [idx]: correctlyFormattedNumber,
       [secondaryStringIdx]: secondaryCorrectFormattedNumber
-    })
+    });
   };
   const handleExchange = (evt) => {
 
@@ -63,7 +70,7 @@ export default function ExchangeUnit({rates, pockets}){
                   </option>
           ))}
           </select>
-          <input type="tel" className="form-control" value={currentInputValues['0']} onChange={(evt) => handleChangeInput(evt, 0)}/>
+          <input type="text" className="form-control" value={currentInputValues['0']} onChange={(evt) => handleChangeInput(evt, 0)}/>
         </div>
       </div>
       <div className="input-group mb-3 exchange-unit-inputs">
@@ -74,7 +81,7 @@ export default function ExchangeUnit({rates, pockets}){
                 </option>
         ))}
         </select>
-        <input type="tel" className="form-control" min={0} value={currentInputValues['1']} onChange={(evt) => handleChangeInput(evt, 1)}/>
+        <input type="text" className="form-control" min={0} value={currentInputValues['1']} onChange={(evt) => handleChangeInput(evt, 1)}/>
       </div>
       <button type="button" className="form-control" onClick={handleExchange}> Exchange </button>
       </>

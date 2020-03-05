@@ -18,9 +18,3 @@ export default function ExchangeField({
     </div>
   );
 }
-
-// <input
-//   type="text"
-//   className="form-control"
-//   value={currentInputValues['0']}
-//   onChange={(evt) => handleChangeInput(evt, 0)}/>
