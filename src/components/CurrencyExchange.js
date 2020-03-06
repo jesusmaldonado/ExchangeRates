@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from "react";
 import Pockets from './Pockets';
 import useRates from '../hooks/useRates';
-import ExchangeUnit from './ExchangeUnit';
+import Exchange from './Exchange';
 const CurrencyExchange = () => {
   const rates = useRates();
-  const [pockets, setPockets] = useState({
-    'USD': 100,
-    'GBP': 50,
-    'EUR': 150,
-  });
+  const [pockets, setPockets] = useState([
+    {type: 'USD', amount: 150},
+    {type: 'EUR', amount: 50},
+    {type: 'GBP', amount: 100}
+  ]);
   return (
     <div>
-      <ExchangeUnit
+      <Exchange
         pockets={pockets}
+        setPockets={setPockets}
         rates={rates}/>
       <Pockets pockets={pockets}/>
     </div>

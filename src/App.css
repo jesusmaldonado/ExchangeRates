@@ -1,7 +1,22 @@
-.exchange-unit {
-  display: flex;
-}
-.exchange-unit-inputs {
+.app {
   display: flex;
   flex-direction: column;
+}
+
+.app-header {
+  text-align: center;
+}
+
+.exchange-unit {
+  display: flex;
+  justify-content: space-around;
+}
+
+.exchange-unit-inputs {
+  display: flex;
+}
+
+.pockets {
+  max-width: 50vw;
+  margin-top: 10vh;
 }
