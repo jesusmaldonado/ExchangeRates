@@ -16,7 +16,6 @@ export default function Exchange({rates, pockets, setPockets}){
   // this effect fetches the current exchange rate applicable to
   // the current inputs
   const currentExchangeRate = useCurrentExchangeRate(inputs, rates);
-
   const handleOnChangeCurrency = (evt) => {
     const newCurrencyUnit = evt.target.value;
     const indexOfCurrentInput = Number(evt.target.dataset.index);
@@ -27,7 +26,10 @@ export default function Exchange({rates, pockets, setPockets}){
   };
 
   const handleOnChangeAmount = (evt) => {
-    const newCurrencyAmount = evt.target.value;
+    let newCurrencyAmount = evt.target.value;
+    if (!newCurrencyAmount){
+      newCurrencyAmount = '0';
+    }
     const indexOfCurrentInput = Number(evt.target.dataset.index);
     dispatch({
       type: 'CHANGE_CURRENCY_AMOUNT',

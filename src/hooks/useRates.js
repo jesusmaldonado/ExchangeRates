@@ -2,12 +2,23 @@ import { useState, useEffect } from "react";
 
 export default function useRates(){
   const [rates, setRates] = useState({});
+  const abortController = new AbortController();
+  const signal = abortController.signal
+  let jsonResults;
   async function fetchData() {
-    let jsonResults;
     try {
-      const resUSD = await fetch("https://api.exchangeratesapi.io/latest?base=USD");
-      const resEuro = await fetch("https://api.exchangeratesapi.io/latest?base=EUR");
-      const resGBP = await fetch("https://api.exchangeratesapi.io/latest?base=GBP");
+      const resUSD = await fetch(
+        "https://api.exchangeratesapi.io/latest?base=USD",
+        {signal}
+      );
+      const resEuro = await fetch(
+        "https://api.exchangeratesapi.io/latest?base=EUR",
+        {signal}
+      );
+      const resGBP = await fetch(
+        "https://api.exchangeratesapi.io/latest?base=GBP",
+        {signal}
+      );
       jsonResults = await Promise.all([resUSD.json(), resEuro.json(), resGBP.json()])
     } catch (err) {
       console.log(err);
@@ -28,7 +39,8 @@ export default function useRates(){
   useEffect(() => {
     fetchData();
     const id = setInterval(fetchData, 10000);
-    return () => clearInterval(id);
+    return () => { clearInterval(id); abortController.abort()};
+    //this is not a dependency, this hook needs to run once.
   }, []);
 
   return rates;

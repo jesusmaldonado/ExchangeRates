@@ -7,6 +7,7 @@ export default function CurrencyInput({errorMessage, input, index, handleOnChang
       className={clsx("form-control", "p-2", errorMessage && index === 0 && 'is-invalid')}
       value={input.amount}
       data-index={index}
+      onBlur={handleOnChangeAmount}
       onChange={handleOnChangeAmount}
     />
     {errorMessage && index === 0 && (

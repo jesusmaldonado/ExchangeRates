@@ -47,6 +47,7 @@ function changeCurrencyAmountReducer(state, {newCurrencyAmount, indexOfCurrentIn
   const baseCurrency = inputs[indexOfCurrentInput]['type'];
   const secondaryCurrency = inputs[indexToChange]['type'];
   const secondaryAmount = convertedCurrencyAmount(sanitizedNewCurrencyAmount, rates, baseCurrency, secondaryCurrency);
+
   const newInputs = inputs.map(({type, amount}, idx) => {
     if (idx === indexOfCurrentInput) {
       return {

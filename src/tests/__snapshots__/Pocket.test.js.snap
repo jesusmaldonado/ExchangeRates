@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pocket renders a currency and Amount 1`] = `
+<tr>
+  <td
+    className="text-center"
+  >
+    <span
+      className="flag-icon flag-icon-us"
+    />
+  </td>
+  <td
+    className="text-center"
+  >
+    <span>
+      $100
+    </span>
+  </td>
+</tr>
+`;
