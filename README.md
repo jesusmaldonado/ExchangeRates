@@ -1,6 +1,6 @@
 This is just an exchange "screen" using only hooks and effects. It follows a redux pattern from the exchange screen down, but the idea was to use a minimal toolset and mimic the patterns of redux/sagas without the weight and setup. I've used both snapshotting and react-dom/test-utils, as they are capable of handling hooks.
 
-This project was for Revolut just as much as it was for me; it was very interesting to learn how to use hooks in a functional way.
+This project was for Revolut just as much as it was for me; it was very interesting to learn how to use hooks in a functional way and implement Redux without using Redux. :)
 
 ## Available Scripts
 
