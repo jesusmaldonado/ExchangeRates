@@ -17,12 +17,13 @@ afterAll(() => {
   container.remove();
   container = null;
 });
-
-it("renders a loading state", () => {
-  act(() => {
-    render(<CurrencyExchange />, container);
+describe('before receiving data', () => {
+  it("renders a loading state", () => {
+    act(() => {
+      render(<CurrencyExchange />, container);
+    });
+    expect(container.innerHTML).toMatch('Loading...');
   });
-  expect(container.innerHTML).toMatch('Loading...');
 });
 describe('after receiving data', () => {
   beforeEach(() => {
@@ -32,6 +33,7 @@ describe('after receiving data', () => {
         json: () => Promise.resolve(fakeResponse)
       });
     });
+
   })
   afterEach(() => {
     global.fetch.mockRestore();
@@ -157,7 +159,6 @@ describe('after receiving data', () => {
   });
 
   it("doesn't let us update exchange more and shows an error message", async() => {
-    jest.useFakeTimers();
     await act(async () => {
       render(<CurrencyExchange/>, container);
     });

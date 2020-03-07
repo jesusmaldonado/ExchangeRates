@@ -39,8 +39,11 @@ export default function useRates(){
   useEffect(() => {
     fetchData();
     const id = setInterval(fetchData, 10000);
-    return () => { clearInterval(id); abortController.abort()};
-    //this is not a dependency, this hook needs to run once.
+    return () => {
+      clearInterval(id);
+      abortController.abort();
+    };
+    // this is not a dependency, this hook needs to run once.
     // eslint-disable-next-line
   }, []);
 

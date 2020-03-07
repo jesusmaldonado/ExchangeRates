@@ -4,7 +4,7 @@ import CurrencyExchange from './components/CurrencyExchange';
 function App() {
   return (
     <div className="app">
-      <h1 className="app-header"> Revolut App </h1>
+      <h1 className="app-header"> Exchange Rates </h1>
       <CurrencyExchange />
     </div>
   );

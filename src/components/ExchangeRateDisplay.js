@@ -17,7 +17,7 @@ export default function ExchangeRateDisplay({currentExchangeRate}){
           className={`flag-icon flag-icon-${cIconMap[secondaryCurrency]}`}>
         </span>
       </div>
-      <div className="align-self-center">{rate}</div>
+      <div className="align-self-center"><span className="font-weight-bold">Rate  </span>{rate}</div>
       </>
     )}
   </div>);
