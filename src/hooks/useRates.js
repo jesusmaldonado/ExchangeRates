@@ -41,6 +41,7 @@ export default function useRates(){
     const id = setInterval(fetchData, 10000);
     return () => { clearInterval(id); abortController.abort()};
     //this is not a dependency, this hook needs to run once.
+    // eslint-disable-next-line
   }, []);
 
   return rates;
