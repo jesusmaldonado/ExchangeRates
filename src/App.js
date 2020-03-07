@@ -3,7 +3,7 @@ import './App.css';
 import CurrencyExchange from './components/CurrencyExchange';
 function App() {
   return (
-    <div classname="app">
+    <div className="app">
       <h1 className="app-header"> Revolut App </h1>
       <CurrencyExchange />
     </div>

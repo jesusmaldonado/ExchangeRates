@@ -1,7 +1,5 @@
 import React from 'react'
 import ExchangeRateDisplay from './ExchangeRateDisplay';
-import useError from '../hooks/useError';
-import clsx from 'clsx';
 import PocketSelect from './PocketSelect';
 import CurrencyInput from './CurrencyInput';
 export default function ExchangeTypeForm({
@@ -10,10 +8,11 @@ export default function ExchangeTypeForm({
   pockets,
   handleOnChangeCurrency,
   handleOnChangeAmount,
-  currentExchangeRate
+  currentExchangeRate,
+  setPockets,
+  errorMessage
 }){
   const possiblePockets = pockets.map(p => p.type);
-  const errorMessage = useError(input, pockets, index);
   return (
     <>
     <div className="d-flex">

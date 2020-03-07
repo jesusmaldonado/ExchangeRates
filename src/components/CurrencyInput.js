@@ -4,12 +4,12 @@ export default function CurrencyInput({errorMessage, input, index, handleOnChang
   return (
     <div className="input-group d-flex">
     <input type="text"
-      className={clsx("form-control", "p-2", errorMessage && 'is-invalid')}
+      className={clsx("form-control", "p-2", errorMessage && index === 0 && 'is-invalid')}
       value={input.amount}
       data-index={index}
       onChange={handleOnChangeAmount}
     />
-    {errorMessage && (
+    {errorMessage && index === 0 && (
       <div className={clsx("p-2", 'invalid-tooltip')}>
         {errorMessage}
       </div>

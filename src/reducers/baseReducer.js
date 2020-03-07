@@ -63,12 +63,24 @@ function changeCurrencyAmountReducer(state, {newCurrencyAmount, indexOfCurrentIn
     inputs: newInputs
   }
 };
+
+function resetCurrencyReducer(state){
+  const {inputs} = state;
+  const newInputs = inputs.map((input) => (
+    {...input, amount: '0'}
+  ));
+  return {
+    inputs: newInputs
+  };
+}
 export default function baseReducer(state, action) {
   switch (action.type) {
     case 'CHANGE_CURRENCY_UNIT':
       return changeCurrencyUnitReducer(state, action.payload);
     case 'CHANGE_CURRENCY_AMOUNT':
       return changeCurrencyAmountReducer(state, action.payload);
+    case 'RESET_CURRENCY':
+      return resetCurrencyReducer(state)
     default:
       throw new Error();
   }
