@@ -16,6 +16,7 @@ export default function Exchange({rates, pockets, setPockets}){
   // this effect fetches the current exchange rate applicable to
   // the current inputs
   const currentExchangeRate = useCurrentExchangeRate(inputs, rates);
+
   const handleOnChangeCurrency = (evt) => {
     const newCurrencyUnit = evt.target.value;
     const indexOfCurrentInput = Number(evt.target.dataset.index);
@@ -42,6 +43,7 @@ export default function Exchange({rates, pockets, setPockets}){
   };
   const errorMessage = useError(inputs[0], pockets);
   const isButtonDisabled = errorMessage || inputs[0]['amount'] === "0";
+
   const handleExchange = () => {
     if (isButtonDisabled){
       return;

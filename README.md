@@ -1,4 +1,6 @@
-This is just an exchange "screen" using only hooks and effects.
+This is just an exchange "screen" using only hooks and effects. It follows a redux pattern from the exchange screen down, but the idea was to use a minimal toolset and mimic the patterns of redux/sagas without the weight and setup. I've used both snapshotting and react-dom/test-utils, as they are capable of handling hooks.
+
+This project was for Revolut just as much as it was for me; it was very interesting to learn how to use hooks in a functional way.
 
 ## Available Scripts
 
@@ -12,8 +14,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 ### `npm run test`
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+I focused on e2e integration tests with not a lot of unit tests and snapshots, because they are more assertive and more difficult to manipulate, and I wanted to directly check classes. Normally, I would lean more towards snapshots.
 
 ### `npm run build`
 
@@ -24,19 +25,3 @@ The build is minified and the filenames include the hashes.<br />
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run build`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
