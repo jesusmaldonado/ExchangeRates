@@ -18,8 +18,8 @@ afterAll(() => {
   container = null;
 });
 
-it("renders a loading state", async() => {
-  await act(async() => {
+it("renders a loading state", () => {
+  act(() => {
     render(<CurrencyExchange />, container);
   });
   expect(container.innerHTML).toMatch('Loading...');
